@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
-    //QGuiApplication app(argc, argv);
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
+    //QApplication app(argc, argv);
     qmlRegisterType<Substitution>("app.substitution", 1, 0, "Substitution");
     Substitution substitution;
 
