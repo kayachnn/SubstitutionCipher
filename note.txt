@@ -1,0 +1,1 @@
+Proje macOS üzerinde geliştirildi. Qt Creator indirildikten sonra proje çalıştırılabilir.

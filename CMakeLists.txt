@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(cipher VERSION 0.1 LANGUAGES CXX)
+project(cyrpto-1 VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -26,37 +26,39 @@ set(PROJECT_SOURCES
         qml.qrc
         substitution.cpp
         substitution.h
+        blockCipher.h
+        blockCipher.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(cipher
+    qt_add_executable(crypto-1
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
     )
 # Define target properties for Android with Qt 6 as:
-#    set_property(TARGET cipher APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#    set_property(TARGET crypto-1 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(cipher SHARED
+        add_library(project-1 SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(cipher
+        add_executable(project-1
           ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_compile_definitions(cipher
+target_compile_definitions(crypto-1
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(cipher
+target_link_libraries(crypto-1
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
-set_target_properties(cipher PROPERTIES
+set_target_properties(crypto-1 PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -64,14 +66,14 @@ set_target_properties(cipher PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(cipher PUBLIC  Qt::Charts
+target_link_libraries(crypto-1 PUBLIC  Qt::Charts
         Qt::Core
         Qt::Gui
         Qt::Qml
         Qt::Quick)
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_import_qml_plugins(cipher)
-    qt_finalize_executable(cipher)
+    qt_import_qml_plugins(crypto-1)
+    qt_finalize_executable(crypto-1)
 endif()
 

@@ -4,6 +4,8 @@
 #include <substitution.h>
 #include <QQmlContext>
 
+#include <blockCipher.h>
+
 
 int main(int argc, char *argv[])
 {
@@ -12,11 +14,12 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
     //QApplication app(argc, argv);
-    qmlRegisterType<Substitution>("app.substitution", 1, 0, "Substitution");
+    qmlRegisterType<BlockCipher>("app.blockCipher", 1, 0, "BlockCipher");
     Substitution substitution;
+    BlockCipher blockCipher;
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("substitutionCpp", &substitution);
+    engine.rootContext()->setContextProperty("blockCipher", &blockCipher);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {

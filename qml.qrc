@@ -1,7 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>page1.qml</file>
-        <file>page2.qml</file>
+        <file>components/UpperLayoutText.qml</file>
+        <file>components/UpperLayoutRow.qml</file>
+        <file>components/UpperLayout.qml</file>
+        <file>components/PlainTextInput.qml</file>
+        <file>components/CipherTextInput.qml</file>
+        <file>components/GraficOutput.qml</file>
+        <file>components/SelectLanguage.qml</file>
+        <file>components/SifreleButton.qml</file>
+        <file>components/MiddleLayout.qml</file>
+        <file>components/LowerLayout.qml</file>
+        <file>components/GenerateKeyLayout.qml</file>
     </qresource>
 </RCC>
